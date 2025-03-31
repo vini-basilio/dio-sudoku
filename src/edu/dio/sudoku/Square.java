@@ -1,8 +1,8 @@
 package edu.dio.sudoku;
 
 public class Square {
-    //Os espaços a mais são precisos por que %s estava virando apenas 1 caracter.
-    //Fazendo com que a cada inserção o alinhamento fosse se perdendo
+    // Os espaços a mais são precisos por que %s estava virando apenas 1 caracter.
+    // Fazendo com que a cada inserção o alinhamento fosse se perdendo
     private String currentValue;
 
     private final int expectedValue;
@@ -35,9 +35,9 @@ public class Square {
         this.expectedValue = expectedValue;
         this.fixed = fixed;
         if (fixed) {
-            currentValue = " "+ String.valueOf(expectedValue);
+            currentValue = " " + String.valueOf(expectedValue);
         } else {
-            currentValue = " ";
+            currentValue = "  ";
         }
     }
 }
