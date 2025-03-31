@@ -31,6 +31,19 @@ public class Board {
         return squares;
     }
 
+    public String boardState() {
+        List<String> printBoard = new ArrayList<>();
+        for (var lines : squares) {
+            for (Square squares : lines) {
+
+                printBoard.add(squares.getPrintbleValue());
+            }
+
+        }
+        var boarState = String.format(BoardTemplate.BOARD_TEMPLATE, printBoard.toArray());
+        return boarState;
+    }
+
     public void makeAPlay(int line, int column, int value) {
         if (line < 0 || line > 8)
             return;
