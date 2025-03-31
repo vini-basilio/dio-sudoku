@@ -54,4 +54,13 @@ public class Board {
         var square = squares.get(line).get(column);
         square.setCurrentValue(value);
     }
+
+    public void clearASquare(int line, int column) {
+        if (line < 0 || line > 8)
+            return;
+        if (column < 0 || column > 8)
+            return;
+        var square = squares.get(line).get(column);
+        square.clearSpace();
+    }
 }

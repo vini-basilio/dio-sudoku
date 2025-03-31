@@ -1,16 +1,17 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
 import edu.dio.sudoku.Board;
-import edu.dio.sudoku.BoardTemplate;
-import edu.dio.sudoku.Square;
 
 public class App {
     public static void main(String[] args) throws Exception {
         var board = new Board();
 
         Scanner scanner = new Scanner(System.in);
+
+        int line, column;
+        String askLine, askColumn;
+
+        askLine = "\nInforme o número da linha: ";
+        askColumn = "\nInforme o número da coluna: ";
 
         var loopGame = true;
         while (loopGame) {
@@ -31,19 +32,30 @@ public class App {
 
                     break;
                 case "2":
-                    System.out.println("\nInforme o número da linha: ");
-                    var line = scanner.nextInt();
+                    System.out.println(askLine);
+                    line = scanner.nextInt();
                     scanner.nextLine();
 
                     System.out.println("\nInforme o número da coluna: ");
-                    var column = scanner.nextInt();
+                    column = scanner.nextInt();
                     scanner.nextLine();
 
-                    System.out.println("\nInforme o número para ser inserido: ");
+                    System.out.println(askColumn);
                     var value = scanner.nextInt();
                     scanner.nextLine();
 
                     board.makeAPlay(line, column, value);
+                    break;
+                case "3":
+                    System.out.println(askLine);
+                    line = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println(askColumn);
+                    column = scanner.nextInt();
+                    scanner.nextLine();
+
+                    board.clearASquare(line, column);
                     break;
                 case "4":
                     System.out.println(board.boardState());

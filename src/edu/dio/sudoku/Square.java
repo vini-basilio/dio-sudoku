@@ -38,6 +38,8 @@ public class Square {
     }
 
     public void clearSpace() {
+        if (fixed)
+            return;
         this.currentValue = -1;
     }
 
