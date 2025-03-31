@@ -28,11 +28,13 @@ public class Square {
     }
 
     public void setCurrentValue(Integer newValue) {
+
         if (fixed)
             return;
-        if (this.currentValue == -1)
+        if (this.currentValue != -1)
             return;
         this.currentValue = newValue;
+
     }
 
     public void clearSpace() {
