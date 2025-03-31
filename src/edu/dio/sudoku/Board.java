@@ -32,6 +32,12 @@ public class Board {
     }
 
     public void makeAPlay(int line, int column, int value) {
+        if (line < 0 || line > 8)
+            return;
+        if (column < 0 || column > 8)
+            return;
+        if (value < 1 || value > 9)
+            return;
         var square = squares.get(line).get(column);
         square.setCurrentValue(value);
     }
