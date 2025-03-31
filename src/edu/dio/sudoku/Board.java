@@ -30,4 +30,9 @@ public class Board {
     public List<List<Square>> getSquares() {
         return squares;
     }
+
+    public void makeAPlay(int line, int column, int value) {
+        var square = squares.get(line).get(column);
+        square.setCurrentValue(value);
+    }
 }
