@@ -30,22 +30,4 @@ public class Board {
     public List<List<Square>> getSquares() {
         return squares;
     }
-
-    public static void main(String[] args) {
-
-        var board = new Board();
-
-        List<String> printBoard = new ArrayList<>();
-        for (var lines : board.getSquares()) {
-            for (Square squares : lines) {
-
-                printBoard.add(squares.getCurrentValue());
-            }
-
-        }
-        ;
-
-        System.out.println(
-                String.format(BoardTemplate.BOARD_TEMPLATE, printBoard.toArray()));
-    }
 }
