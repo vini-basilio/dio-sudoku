@@ -3,7 +3,7 @@ package edu.dio.sudoku;
 public class Square {
     // Os espaços a mais são precisos por que %s estava virando apenas 1 caracter.
     // Fazendo com que a cada inserção o alinhamento fosse se perdendo
-    private String currentValue;
+    private int currentValue;
 
     private final int expectedValue;
     private final boolean fixed;
@@ -16,18 +16,27 @@ public class Square {
         return fixed;
     }
 
-    public String getCurrentValue() {
+    public int getCurrentValue() {
         return currentValue;
     }
 
-    public void setCurrentValue(Integer currentValue) {
+    public String getPrintbleValue() {
+        if (currentValue == -1) {
+            return "  ";
+        }
+        return " " + String.valueOf(currentValue);
+    }
+
+    public void setCurrentValue(Integer newValue) {
         if (fixed)
             return;
-        this.currentValue = " " + String.valueOf(currentValue);
+        if (this.currentValue == -1)
+            return;
+        this.currentValue = newValue;
     }
 
     public void clearSpace() {
-        this.currentValue = " ";
+        this.currentValue = -1;
     }
 
     public Square(int expectedValue, boolean fixed) {
@@ -35,9 +44,9 @@ public class Square {
         this.expectedValue = expectedValue;
         this.fixed = fixed;
         if (fixed) {
-            currentValue = " " + String.valueOf(expectedValue);
+            currentValue = expectedValue;
         } else {
-            currentValue = "  ";
+            currentValue = -1;
         }
     }
 }
