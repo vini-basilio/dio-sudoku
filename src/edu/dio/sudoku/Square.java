@@ -7,6 +7,22 @@ public class Square {
 
     private final int expectedValue;
     private final boolean fixed;
+    private boolean state;
+
+    public boolean isState() {
+        return state;
+    }
+
+    public Square(int expectedValue, boolean fixed) {
+
+        this.expectedValue = expectedValue;
+        this.fixed = fixed;
+        if (fixed) {
+            currentValue = expectedValue;
+        } else {
+            currentValue = -1;
+        }
+    }
 
     public int getExpectedValue() {
         return expectedValue;
@@ -34,6 +50,7 @@ public class Square {
         if (this.currentValue != -1)
             return;
         this.currentValue = newValue;
+        this.state = this.currentValue == this.expectedValue;
 
     }
 
@@ -43,14 +60,7 @@ public class Square {
         this.currentValue = -1;
     }
 
-    public Square(int expectedValue, boolean fixed) {
-
-        this.expectedValue = expectedValue;
-        this.fixed = fixed;
-        if (fixed) {
-            currentValue = expectedValue;
-        } else {
-            currentValue = -1;
-        }
+    public boolean isCorrected() {
+        return this.state;
     }
 }

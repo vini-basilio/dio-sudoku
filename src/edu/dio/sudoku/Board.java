@@ -6,10 +6,12 @@ import java.util.List;
 
 public class Board {
     private List<List<Square>> squares;
-    private List<List<Boolean>> gameStatus;
+    private boolean isFirstMove;
+    private boolean isCompleted;
+    private boolean isCorrected;
 
     public Board() {
-
+        isFirstMove = true;
         squares = new ArrayList<>();
 
         for (int line = 0; line < 9; line++) {
@@ -45,7 +47,27 @@ public class Board {
         return boarState;
     }
 
+    private void updateIsCompleted() {
+        for (var lines : squares) {
+            for (Square square : lines) {
+
+                if (square.getPrintbleValue().equalsIgnoreCase("  ")) {
+                    isCompleted = false;
+                    return;
+                }
+                ;
+            }
+        }
+    }
+
+    public boolean[] boardState() {
+        this.updateIsCompleted();
+        return new boolean[] { isFirstMove, isCompleted, isCorrected };
+    }
+
     public void makeAPlay(int line, int column, int value) {
+        isFirstMove = false;
+
         if (line < 0 || line > 8)
             return;
         if (column < 0 || column > 8)
@@ -54,6 +76,9 @@ public class Board {
             return;
         var square = squares.get(line).get(column);
         square.setCurrentValue(value);
+
+        if (!square.isState())
+            this.isCorrected = false;
 
     }
 

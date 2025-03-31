@@ -8,10 +8,11 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         int line, column;
-        String askLine, askColumn;
+        String askLine, askColumn, askNumber;
 
         askLine = "\nInforme o número da linha: ";
         askColumn = "\nInforme o número da coluna: ";
+        askNumber = "\nInforme o número para ser jogado: ";
 
         var loopGame = true;
         while (loopGame) {
@@ -36,11 +37,11 @@ public class App {
                     line = scanner.nextInt();
                     scanner.nextLine();
 
-                    System.out.println("\nInforme o número da coluna: ");
+                    System.out.println(askColumn);
                     column = scanner.nextInt();
                     scanner.nextLine();
 
-                    System.out.println(askColumn);
+                    System.out.println(askNumber);
                     var value = scanner.nextInt();
                     scanner.nextLine();
 
@@ -59,6 +60,18 @@ public class App {
                     break;
                 case "4":
                     System.out.println(board.printBoard());
+                    break;
+                case "5":
+                    var state = board.boardState();
+                    if (state[0]) {
+                        System.out.println("O tabuleiro está limpo. Faça uma jogada!");
+                    } else if (!state[1]) {
+                        System.out.println("O tabuleiro não está completado");
+                    } else if (state[1] & !state[2]) {
+                        System.out.println("O tabuleiro está completo. Mas há números errados!");
+                    } else {
+                        System.out.println("Parabéns! Você completou o jogo");
+                    }
                     break;
                 case "7":
                     loopGame = false;
