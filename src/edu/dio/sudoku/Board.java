@@ -6,32 +6,33 @@ import java.util.List;
 
 public class Board {
     private List<List<Square>> squares;
+    private List<List<Boolean>> gameStatus;
 
     public Board() {
 
         squares = new ArrayList<>();
 
         for (int line = 0; line < 9; line++) {
+
             List<Square> lineBoard = new ArrayList<>();
+            List<Boolean> gameStatusLine = new ArrayList<>();
+
             for (int column = 0; column < 9; column++) {
 
                 var number = InitState.numbers[line][column];
                 var isFixed = InitState.fixed[line][column];
-
                 var square = new Square(number, isFixed);
 
                 lineBoard.add(square);
+                gameStatusLine.add(InitState.fixed[line][column]);
+
             }
 
             squares.add(lineBoard);
         }
     }
 
-    public List<List<Square>> getSquares() {
-        return squares;
-    }
-
-    public String boardState() {
+    public String printBoard() {
         List<String> printBoard = new ArrayList<>();
         for (var lines : squares) {
             for (Square squares : lines) {
@@ -53,6 +54,7 @@ public class Board {
             return;
         var square = squares.get(line).get(column);
         square.setCurrentValue(value);
+
     }
 
     public void clearASquare(int line, int column) {

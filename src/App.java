@@ -58,7 +58,7 @@ public class App {
                     board.clearASquare(line, column);
                     break;
                 case "4":
-                    System.out.println(board.boardState());
+                    System.out.println(board.printBoard());
                     break;
                 case "7":
                     loopGame = false;
