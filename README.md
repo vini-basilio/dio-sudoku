@@ -27,4 +27,4 @@ java NomeDoPrograma 5,1 3,1 0,0 0,0 7,1 0,0 0,0 0,0 0,0 6,1 0,0 0,0 1,1 9,1 5,1 
 - [x] Verificar jogo: visualizar a situação atual do jogo;
 - [x] Verificar status do jogo: Deve-se verificar o status atual do jogo (não iniciado, incompleto e completo) e se contém ou não erros (o jogo está errado quando tem números em posições conflitantes) todos os status do jogo podem conter ou não erros, exceto o status não iniciado que é sempre sem erro;
 - [x] Limpar: remove todos os números informados pelo usuário e mantém os fixos do jogo;
-- [ ] Finalizar o jogo: Se o jogo estiver com todos os espaços preenchidos de forma válida o jogo é encerrado, senão informa ao usuário que ele deve preencher todos os espaços com seus respectivos números;
+- [x] Finalizar o jogo: Se o jogo estiver com todos os espaços preenchidos de forma válida o jogo é encerrado, senão informa ao usuário que ele deve preencher todos os espaços com seus respectivos números;

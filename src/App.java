@@ -62,12 +62,11 @@ public class App {
                     System.out.println(board.printBoard());
                     break;
                 case "5":
-                    var state = board.boardState();
-                    if (state[0]) {
+                    if (board.isFirstMove()) {
                         System.out.println("O tabuleiro está limpo. Faça uma jogada!");
-                    } else if (!state[1]) {
+                    } else if (!board.isCompleted()) {
                         System.out.println("O tabuleiro não está completado.");
-                    } else if (state[1] & !state[2]) {
+                    } else if (board.isCompleted() & board.isCorrected()) {
                         System.out.println("O tabuleiro está completo. Mas há números errados!");
                     } else {
                         System.out.println("Parabéns! Você completou o jogo!");
@@ -77,8 +76,14 @@ public class App {
                     board.clearBoard();
                     break;
                 case "7":
-                    loopGame = false;
+
+                    if (board.isCompleted() & board.isCorrected()) {
+                        System.out.println("Parabéns! Você completou o jogo!");
+                        loopGame = false;
+                    }
+                    System.out.println("Você ainda não completou o jogo :c");
                     break;
+
                 default:
                     break;
             }

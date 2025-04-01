@@ -7,13 +7,32 @@ import java.util.List;
 public class Board {
     private List<List<Square>> squares;
     private boolean isFirstMove;
-    private boolean isCompleted;
     private boolean isCorrected;
+
+    public boolean isFirstMove() {
+        return isFirstMove;
+    }
+
+    public boolean isCompleted() {
+        for (var lines : squares) {
+            for (Square square : lines) {
+
+                if (square.getPrintbleValue().equalsIgnoreCase("  ")) {
+                    return false;
+
+                }
+                ;
+            }
+        }
+        return true;
+    }
+
+    public boolean isCorrected() {
+        return isCorrected;
+    }
 
     public Board() {
         isFirstMove = true;
-        isCompleted = false;
-        isCompleted = false;
         squares = new ArrayList<>();
 
         for (int line = 0; line < 9; line++) {
@@ -43,24 +62,6 @@ public class Board {
         }
         var boarState = String.format(BoardTemplate.BOARD_TEMPLATE, printBoard.toArray());
         return boarState;
-    }
-
-    private void updateIsCompleted() {
-        for (var lines : squares) {
-            for (Square square : lines) {
-
-                if (square.getPrintbleValue().equalsIgnoreCase("  ")) {
-                    isCompleted = false;
-                    return;
-                }
-                ;
-            }
-        }
-    }
-
-    public boolean[] boardState() {
-        this.updateIsCompleted();
-        return new boolean[] { isFirstMove, isCompleted, isCorrected };
     }
 
     public void makeAPlay(int line, int column, int value) {
