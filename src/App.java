@@ -66,12 +66,15 @@ public class App {
                     if (state[0]) {
                         System.out.println("O tabuleiro está limpo. Faça uma jogada!");
                     } else if (!state[1]) {
-                        System.out.println("O tabuleiro não está completado");
+                        System.out.println("O tabuleiro não está completado.");
                     } else if (state[1] & !state[2]) {
                         System.out.println("O tabuleiro está completo. Mas há números errados!");
                     } else {
-                        System.out.println("Parabéns! Você completou o jogo");
+                        System.out.println("Parabéns! Você completou o jogo!");
                     }
+                    break;
+                case "6":
+                    board.clearBoard();
                     break;
                 case "7":
                     loopGame = false;

@@ -9,10 +9,6 @@ public class Square {
     private final boolean fixed;
     private boolean state;
 
-    public boolean isState() {
-        return state;
-    }
-
     public Square(int expectedValue, boolean fixed) {
 
         this.expectedValue = expectedValue;
