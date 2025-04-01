@@ -15,6 +15,7 @@ public class Square {
         this.fixed = fixed;
         if (fixed) {
             currentValue = expectedValue;
+            this.state = true;
         } else {
             currentValue = -1;
         }
@@ -46,7 +47,7 @@ public class Square {
         if (this.currentValue != -1)
             return;
         this.currentValue = newValue;
-        this.state = this.currentValue == this.expectedValue;
+        this.state = newValue == this.expectedValue;
 
     }
 

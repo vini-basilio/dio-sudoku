@@ -1,6 +1,5 @@
 package edu.dio.sudoku;
 
-import edu.dio.sudoku.utils.InitState;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,9 @@ public class Board {
         return isCorrected;
     }
 
-    public Board() {
+    public Board(
+            int numbers[][],
+            boolean fixed[][]) {
         isFirstMove = true;
         squares = new ArrayList<>();
 
@@ -41,8 +42,8 @@ public class Board {
 
             for (int column = 0; column < 9; column++) {
 
-                var number = InitState.numbers[line][column];
-                var isFixed = InitState.fixed[line][column];
+                var number = numbers[line][column];
+                var isFixed = fixed[line][column];
                 var square = new Square(number, isFixed);
                 lineBoard.add(square);
 
@@ -76,8 +77,8 @@ public class Board {
         var square = squares.get(line).get(column);
         square.setCurrentValue(value);
 
-        if (!square.isCorrected())
-            this.isCorrected = false;
+        if (square.isCorrected())
+            this.isCorrected = true;
 
     }
 
